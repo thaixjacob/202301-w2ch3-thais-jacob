@@ -50,7 +50,7 @@ function calculatorPro(numbers) {
     }
   }
 
-  function calculator() {
+  function calculator(value) {
     //to calculate
 
     let sum = 0;
@@ -58,30 +58,30 @@ function calculatorPro(numbers) {
     let multiplication = 1;
     let division = 0;
 
-    for (let i = 0; i < numbers.length; i++) {
-      sum += numbers[i];
+    for (let i = 0; i < value.length; i++) {
+      sum += value[i];
     }
     if (!Number.isInteger(sum)) {
       sum = sum.toFixed(3);
     }
 
-    for (let i = 1; i < numbers.length; i++) {
-      subtraction -= numbers[i];
-      subtraction = numbers[0] + subtraction;
+    for (let i = 1; i < value.length; i++) {
+      subtraction -= value[i];
+      subtraction = value[0] + subtraction;
     }
     if (!Number.isInteger(subtraction)) {
       subtraction = subtraction.toFixed(3);
     }
 
-    for (let i = 0; i < numbers.length; i++) {
-      multiplication = multiplication * numbers[i];
+    for (let i = 0; i < value.length; i++) {
+      multiplication = multiplication * value[i];
     }
     if (!Number.isInteger(multiplication)) {
       multiplication = multiplication.toFixed(3);
     }
 
-    for (let i = 1; i < numbers.length; i++) {
-      division = numbers[0] /= numbers[i];
+    for (let i = 1; i < value.length; i++) {
+      division = value[0] /= value[i];
     }
     if (!Number.isInteger(division)) {
       division = division.toFixed(3);
@@ -113,12 +113,12 @@ function calculatorPro(numbers) {
 function askContinue() {
   // to ask for more operations
   let ask = window.confirm(`Would you like to perform another operation?`);
-  while (ask == true) {
+  if (ask === true) {
     numbersToCalculate = [];
     calculatorPro(numbersToCalculate);
-    break;
+    return;
   }
-  if (ask == false) {
+  if (ask === false) {
     window.alert("See you soon!");
   }
 }
